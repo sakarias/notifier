@@ -24,4 +24,4 @@ function notify {
 	fi
 }
 
-notify "${1}"
+notify "${?}"
