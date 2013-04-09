@@ -4,9 +4,15 @@ source settings.conf
 
 function notify {
 
-	${beengone_path} ${beengone_time} >/dev/null
+	if [ -x ${beengone_path} ]
+		then
+			${beengone_path} ${beengone_time} >/dev/null
+		else
+			echo "BeenGone is missing, please install it."
+			exit 1
+	fi
 
-	if [ $? -eq 0 ];
+	if [ $? -eq 1 ]
 		then
 			/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message "${1}" >/dev/null
 		else
