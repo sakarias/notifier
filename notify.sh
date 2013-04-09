@@ -4,9 +4,9 @@ source settings.conf
 
 function notify {
 
-	/usr/local/bin/beengone 5 >/dev/null
+	${beengone_path} ${beengone_time} >/dev/null
 
-	if [ $? -eq 1 ];
+	if [ $? -eq 0 ];
 		then
 			/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message "${1}" >/dev/null
 		else
